@@ -18,12 +18,29 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      
+      new InjectManifest({
+        swSrc: './src-sw.js'
+      }),
+      new HtmlWebpackPlugin({
+        title: 'HTMLWebpackPlugin',
+        template: './index.html',
+    }),
+      new WebpackPwaManifest({
+        name: "Just Another Text Editor",
+        short_name: 'JATE',
+        icons:[{
+          src:path.resolve('src/images/logo.png'),
+          destination: path.join('icons','icons')
+        }]
+      })
     ],
 
     module: {
-      rules: [
-        
+      rules: [{
+
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"]
+      }
       ],
     },
   };
