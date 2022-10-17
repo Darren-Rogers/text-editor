@@ -30,7 +30,8 @@ module.exports = () => {
         short_name: 'JATE',
         icons:[{
           src:path.resolve('src/images/logo.png'),
-          destination: path.join('icons','icons')
+          destination: path.join('icons','icons'),
+          sizes: [96, 128, 256, 512]
         }]
       })
     ],
